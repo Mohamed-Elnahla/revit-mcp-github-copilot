@@ -12,7 +12,9 @@ This project is the server side (providing Tools to AI), and you need to use [re
 
 Join [Discord](https://discord.gg/cGzUGurq) | [QQ Group](http://qm.qq.com/cgi-bin/qm/qr?_wv=1027&k=kLnQiFVtYBytHm7R58KFoocd3mzU_9DR&authKey=fyXDOBmXP7FMkXAWjddWZumblxKJH7ZycYyLp40At3t9%2FOfSZyVO7zyYgIROgSHF&noverify=0&group_code=792379482)
 
-## Features
+## GitHub Copilot Compatibility
+
+This MCP server has been updated to be fully compatible with GitHub Copilot. The tool schemas now properly include the required `items` property for array parameters, resolving validation errors that previously occurred when using array-type parameters with GitHub Copilot's MCP client.
 
 - Allow AI to get data from the Revit project
 - Allow AI to drive Revit to create, modify, and delete elements
@@ -58,6 +60,25 @@ Claude client -> Settings > Developer > Edit Config > claude_desktop_config.json
 ```
 
 Restart the Claude client. When you see the hammer icon, it means the connection to the MCP service is normal.
+
+**GitHub Copilot**
+
+GitHub Copilot supports MCP servers natively. Configure the server in your VS Code settings or workspace configuration:
+
+```json
+{
+  "mcp": {
+    "servers": {
+      "revit-mcp": {
+        "command": "node",
+        "args": ["<path to the built file>\\build\\index.js"]
+      }
+    }
+  }
+}
+```
+
+Restart VS Code or reload the window to apply the configuration.
 
 ![claude](./assets/claude.png)
 
